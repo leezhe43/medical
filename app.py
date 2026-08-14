@@ -1,16 +1,57 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
 import sqlite3
+import os
 
 app = Flask(__name__)
+
 app.secret_key = "family-health-secret-key"
 
-DATABASE = "booking.db"
+# =========================
+# 基本路徑
+# =========================
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DATABASE = os.path.join(BASE_DIR, "booking.db")
+
+CSS_FOLDER = os.path.join(BASE_DIR, "css")
+IMAGE_FOLDER = os.path.join(BASE_DIR, "images")
+JS_FOLDER = os.path.join(BASE_DIR, "js")
+
+
+# =========================
+# CSS
+# =========================
+
+@app.route("/css/<path:filename>")
+def css(filename):
+    return send_from_directory(CSS_FOLDER, filename)
+
+
+# =========================
+# Images
+# =========================
+
+@app.route("/images/<path:filename>")
+def images(filename):
+    return send_from_directory(IMAGE_FOLDER, filename)
+
+
+# =========================
+# JavaScript
+# =========================
+
+@app.route("/js/<path:filename>")
+def js(filename):
+    return send_from_directory(JS_FOLDER, filename)
 
 
 # =========================
 # 建立資料庫
 # =========================
+
 def init_db():
+
     conn = sqlite3.connect(DATABASE)
 
     conn.execute("""
@@ -32,14 +73,17 @@ def init_db():
 # =========================
 # 首頁
 # =========================
+
 @app.route("/")
 def home():
-    return render_template("index.template")
+
+    return render_template("index.html")
 
 
 # =========================
 # 線上預約
 # =========================
+
 @app.route("/booking", methods=["POST"])
 def booking():
 
@@ -51,8 +95,12 @@ def booking():
 
     # 基本檢查
     if not name or not phone or not booking_date:
+
         flash("請填寫姓名、電話與預約日期。")
-        return redirect(url_for("home") + "#booking")
+
+        return redirect(
+            url_for("home") + "#booking"
+        )
 
     conn = sqlite3.connect(DATABASE)
 
@@ -73,16 +121,20 @@ def booking():
 
     flash("預約成功！我們已收到您的資料。")
 
-    return redirect(url_for("home") + "#booking")
+    return redirect(
+        url_for("home") + "#booking"
+    )
 
 
 # =========================
 # 管理員查看預約
 # =========================
+
 @app.route("/admin")
 def admin():
 
     conn = sqlite3.connect(DATABASE)
+
     conn.row_factory = sqlite3.Row
 
     bookings = conn.execute("""
@@ -94,7 +146,7 @@ def admin():
     conn.close()
 
     return render_template(
-        "admin.template",
+        "admin.html",
         bookings=bookings
     )
 
@@ -102,7 +154,11 @@ def admin():
 # =========================
 # 刪除預約
 # =========================
-@app.route("/admin/delete/<int:booking_id>", methods=["POST"])
+
+@app.route(
+    "/admin/delete/<int:booking_id>",
+    methods=["POST"]
+)
 def delete_booking(booking_id):
 
     conn = sqlite3.connect(DATABASE)
@@ -121,6 +177,7 @@ def delete_booking(booking_id):
 # =========================
 # 程式開始
 # =========================
+
 if __name__ == "__main__":
 
     init_db()
