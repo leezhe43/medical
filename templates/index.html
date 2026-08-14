@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 
@@ -32,7 +33,7 @@
     <!-- 自己的 CSS -->
     <link
         rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css') }}">
+        href="{{ url_for('css', filename='style.css') }}">
 
 </head>
 
@@ -69,7 +70,6 @@
             id="navbarMenu">
 
             <ul class="navbar-nav ms-auto align-items-center">
-
 
                 <li class="nav-item">
                     <a class="nav-link" href="#home">
@@ -192,7 +192,7 @@
             <div class="col-lg-6 text-center">
 
                 <img
-                    src="{{ url_for('static', filename='images/hero.jpg') }}"
+                    src="{{ url_for('images', filename='hero.jpg') }}"
                     class="img-fluid hero-img"
                     alt="醫療團隊">
 
@@ -568,7 +568,7 @@
                 <div class="card doctor-card">
 
                     <img
-                        src="{{ url_for('static', filename='images/doctor1.jpg') }}"
+                        src="{{ url_for('images', filename='doctor1.jpg') }}"
                         class="card-img-top"
                         alt="王醫師">
 
@@ -594,7 +594,7 @@
                 <div class="card doctor-card">
 
                     <img
-                        src="{{ url_for('static', filename='images/doctor2.jpg') }}"
+                        src="{{ url_for('images', filename='doctor2.jpg') }}"
                         class="card-img-top"
                         alt="林醫師">
 
@@ -620,7 +620,7 @@
                 <div class="card doctor-card">
 
                     <img
-                        src="{{ url_for('static', filename='images/doctor3.jpg') }}"
+                        src="{{ url_for('images', filename='doctor3.jpg') }}"
                         class="card-img-top"
                         alt="陳醫師">
 
@@ -797,7 +797,7 @@
             <div class="col-md-4">
 
                 <img
-                    src="{{ url_for('static', filename='images/area1.jpg') }}"
+                    src="{{ url_for('images', filename='area1.jpg') }}"
                     class="img-fluid rounded"
                     alt="環境">
 
@@ -807,7 +807,7 @@
             <div class="col-md-4">
 
                 <img
-                    src="{{ url_for('static', filename='images/area2.jpg') }}"
+                    src="{{ url_for('images', filename='area2.jpg') }}"
                     class="img-fluid rounded"
                     alt="環境">
 
@@ -817,7 +817,7 @@
             <div class="col-md-4">
 
                 <img
-                    src="{{ url_for('static', filename='images/area3.jpg') }}"
+                    src="{{ url_for('images', filename='area3.jpg') }}"
                     class="img-fluid rounded"
                     alt="環境">
 
@@ -1259,10 +1259,11 @@
 <!-- 自己的 JS -->
 
 <script
-    src="{{ url_for('static', filename='js/main.js') }}">
+    src="{{ url_for('js', filename='main.js') }}">
 </script>
 
 
 </body>
 
 </html>
+```
