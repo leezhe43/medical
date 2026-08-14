@@ -1,1 +1,141 @@
+:root {
+    --primary: #2F7F8F;
+    --secondary: #8FCFD1;
+    --light: #F7FCFC;
+    --dark: #23404A;
+    --text: #555;
+}
 
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    background: var(--light);
+    color: var(--text);
+}
+
+/* section1 */
+/* Navbar */
+
+/* Navbar 導覽列 */
+
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, .08);
+    padding: 15px 0;
+}
+
+
+/* Logo 品牌名稱 */
+
+.navbar-brand {
+    color: var(--dark);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.navbar-brand:hover {
+    color: var(--primary);
+}
+
+
+/* 導覽選單 */
+
+.nav-link {
+    color: var(--text);
+    margin: 0 10px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+
+/* 預約按鈕 */
+
+.nav-btn {
+    background: var(--primary);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+.nav-btn:hover {
+    background: #245F6B;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* section2 */
+
+.hero {
+    background:
+        radial-gradient(circle at top right, #dff5f5 0%, transparent 35%),
+        #F5FCFC;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #24505A;
+    line-height: 1.3;
+}
+
+.hero p {
+    max-width: 560px;
+    color: #666;
+    line-height: 1.9;
+    margin: 25px 0;
+}
+
+.hero img {
+    width:100%;
+    max-width:620px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
+}
+
+.hero a {
+
+    .hero .btn-main,
+    .hero .btn-outline {
+        margin-right: 15px;
+    }
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.btn-main {
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn-main:hover {
+    background: #245F6B;
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-3px);
+}
