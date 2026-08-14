@@ -1,0 +1,332 @@
+/* =========================
+   基本設定
+========================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        Arial,
+        sans-serif;
+
+    color: #333;
+    background-color: #fff;
+}
+
+
+/* =========================
+   Navbar
+========================= */
+
+.navbar {
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    color: #147d92;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.navbar-brand:hover {
+    color: #0e6475;
+}
+
+.nav-link {
+    color: #444;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #147d92;
+}
+
+.nav-btn {
+    display: inline-block;
+    padding: 9px 20px;
+    border-radius: 30px;
+    background: #147d92;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-btn:hover {
+    background: #0e6475;
+    color: white;
+}
+
+
+/* =========================
+   Hero
+========================= */
+
+.hero {
+    padding: 150px 0 100px;
+    background:
+        linear-gradient(
+            135deg,
+            #effaff,
+            #ffffff
+        );
+}
+
+.hero h1 {
+    font-size: 52px;
+    line-height: 1.3;
+    font-weight: 800;
+    color: #145c6c;
+}
+
+.hero h1 span {
+    color: #147d92;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 2;
+    margin: 25px 0;
+    color: #555;
+}
+
+.hero-img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   Button
+========================= */
+
+.btn-main {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #147d92;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.btn-main:hover {
+    background: #0e6475;
+    color: white;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 11px 28px;
+    border: 2px solid #147d92;
+    color: #147d92;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+.btn-outline:hover {
+    background: #147d92;
+    color: white;
+}
+
+
+/* =========================
+   Section
+========================= */
+
+.section {
+    padding: 90px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-weight: 700;
+    color: #145c6c;
+}
+
+.section-title p {
+    color: #777;
+}
+
+
+/* =========================
+   Cards
+========================= */
+
+.feature-card,
+.service-card,
+.doctor-card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+    transition: 0.3s;
+}
+
+.feature-card:hover,
+.service-card:hover,
+.doctor-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card .card-body,
+.service-card .card-body {
+    padding: 35px 25px;
+}
+
+.doctor-card img {
+    height: 320px;
+    object-fit: cover;
+}
+
+
+/* =========================
+   Steps
+========================= */
+
+.step-number {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #147d92;
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   Stats
+========================= */
+
+.stats-section {
+    padding: 70px 0;
+    background: #147d92;
+    color: white;
+}
+
+.stats-section h2 {
+    font-size: 42px;
+    font-weight: 800;
+}
+
+.stats-section p {
+    margin: 0;
+}
+
+
+/* =========================
+   Testimonial
+========================= */
+
+.testimonial {
+    max-width: 800px;
+    margin: auto;
+}
+
+.testimonial blockquote {
+    padding: 30px;
+    margin-bottom: 25px;
+    background: #f7fbfc;
+    border-left: 5px solid #147d92;
+    border-radius: 10px;
+}
+
+.testimonial p {
+    font-size: 18px;
+}
+
+
+/* =========================
+   Booking
+========================= */
+
+.booking-section {
+    background: #effaff;
+}
+
+.booking-section form {
+    max-width: 900px;
+    margin: auto;
+}
+
+.form-control {
+    padding: 13px 15px;
+    border-radius: 10px;
+}
+
+.form-control:focus {
+    border-color: #147d92;
+    box-shadow: 0 0 0 0.2rem rgba(20, 125, 146, 0.15);
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+.footer {
+    padding: 40px 0;
+    background: #124e5d;
+    color: white;
+}
+
+.footer p {
+    margin-bottom: 5px;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 991px) {
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .nav-btn {
+        margin-top: 10px;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .btn-main,
+    .btn-outline {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+}
