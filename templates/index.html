@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 
@@ -30,10 +29,10 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
 
-    <!-- 自己的 CSS -->
+    <!-- 自訂 CSS -->
     <link
         rel="stylesheet"
-        href="{{ url_for('css', filename='style.css') }}">
+        href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 
@@ -49,7 +48,8 @@
 
     <div class="container">
 
-        <a class="navbar-brand" href="#home">
+        <a class="navbar-brand fw-bold" href="#home">
+            <i class="fas fa-heart-pulse me-2"></i>
             全家健康管理中心
         </a>
 
@@ -58,7 +58,10 @@
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarMenu">
+            data-bs-target="#navbarMenu"
+            aria-controls="navbarMenu"
+            aria-expanded="false"
+            aria-label="切換導覽列">
 
             <span class="navbar-toggler-icon"></span>
 
@@ -192,7 +195,7 @@
             <div class="col-lg-6 text-center">
 
                 <img
-                    src="{{ url_for('images', filename='hero.jpg') }}"
+                    src="{{ url_for('static', filename='images/hero.jpg') }}"
                     class="img-fluid hero-img"
                     alt="醫療團隊">
 
@@ -390,6 +393,13 @@
                             完整健檢方案，協助您掌握自己的健康狀況。
                         </p>
 
+                        <a href="#booking"
+                           class="btn btn-outline-primary">
+
+                            預約服務
+
+                        </a>
+
                     </div>
 
                 </div>
@@ -416,6 +426,13 @@
                             高血壓、糖尿病等慢性疾病追蹤與健康管理。
                         </p>
 
+                        <a href="#booking"
+                           class="btn btn-outline-danger">
+
+                            預約服務
+
+                        </a>
+
                     </div>
 
                 </div>
@@ -441,6 +458,13 @@
                         <p>
                             提供專業心理健康照護與諮詢服務。
                         </p>
+
+                        <a href="#booking"
+                           class="btn btn-outline-success">
+
+                            預約服務
+
+                        </a>
 
                     </div>
 
@@ -474,7 +498,7 @@
         </div>
 
 
-        <div class="row text-center">
+        <div class="row text-center g-4">
 
 
             <div class="col-md-3">
@@ -486,6 +510,10 @@
                 <h5>
                     線上預約
                 </h5>
+
+                <p>
+                    填寫基本資料與預約時間
+                </p>
 
             </div>
 
@@ -500,6 +528,10 @@
                     現場報到
                 </h5>
 
+                <p>
+                    依照預約時間前往中心
+                </p>
+
             </div>
 
 
@@ -513,6 +545,10 @@
                     醫師診療
                 </h5>
 
+                <p>
+                    由專業醫療人員提供服務
+                </p>
+
             </div>
 
 
@@ -525,6 +561,10 @@
                 <h5>
                     健康追蹤
                 </h5>
+
+                <p>
+                    持續關心您的健康狀況
+                </p>
 
             </div>
 
@@ -565,10 +605,10 @@
 
             <div class="col-md-4">
 
-                <div class="card doctor-card">
+                <div class="card doctor-card h-100">
 
                     <img
-                        src="{{ url_for('images', filename='doctor1.jpg') }}"
+                        src="{{ url_for('static', filename='images/doctor1.jpg') }}"
                         class="card-img-top"
                         alt="王醫師">
 
@@ -591,10 +631,10 @@
 
             <div class="col-md-4">
 
-                <div class="card doctor-card">
+                <div class="card doctor-card h-100">
 
                     <img
-                        src="{{ url_for('images', filename='doctor2.jpg') }}"
+                        src="{{ url_for('static', filename='images/doctor2.jpg') }}"
                         class="card-img-top"
                         alt="林醫師">
 
@@ -617,10 +657,10 @@
 
             <div class="col-md-4">
 
-                <div class="card doctor-card">
+                <div class="card doctor-card h-100">
 
                     <img
-                        src="{{ url_for('images', filename='doctor3.jpg') }}"
+                        src="{{ url_for('static', filename='images/doctor3.jpg') }}"
                         class="card-img-top"
                         alt="陳醫師">
 
@@ -657,7 +697,7 @@
 
     <div class="container">
 
-        <div class="row text-center">
+        <div class="row text-center g-4">
 
 
             <div class="col-md-3">
@@ -737,32 +777,50 @@
         </div>
 
 
-        <div class="testimonial">
-
-            <blockquote>
-
-                <p>
-                    「醫師專業且親切，整體環境舒適，值得推薦！」
-                </p>
-
-                <footer>
-                    王小姐
-                </footer>
-
-            </blockquote>
+        <div class="row g-4">
 
 
-            <blockquote>
+            <div class="col-md-6">
 
-                <p>
-                    「健康檢查流程完善，服務品質非常好。」
-                </p>
+                <div class="card h-100 border-0 shadow-sm">
 
-                <footer>
-                    林先生
-                </footer>
+                    <div class="card-body">
 
-            </blockquote>
+                        <p class="fs-5">
+                            「醫師專業且親切，整體環境舒適，值得推薦！」
+                        </p>
+
+                        <footer>
+                            王小姐
+                        </footer>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="card h-100 border-0 shadow-sm">
+
+                    <div class="card-body">
+
+                        <p class="fs-5">
+                            「健康檢查流程完善，服務品質非常好。」
+                        </p>
+
+                        <footer>
+                            林先生
+                        </footer>
+
+                    </div>
+
+                </div>
+
+            </div>
+
 
         </div>
 
@@ -788,6 +846,10 @@
                 環境介紹
             </h2>
 
+            <p>
+                舒適、明亮、安心的醫療環境
+            </p>
+
         </div>
 
 
@@ -797,9 +859,9 @@
             <div class="col-md-4">
 
                 <img
-                    src="{{ url_for('images', filename='area1.jpg') }}"
+                    src="{{ url_for('static', filename='images/area1.jpg') }}"
                     class="img-fluid rounded"
-                    alt="環境">
+                    alt="接待區">
 
             </div>
 
@@ -807,9 +869,9 @@
             <div class="col-md-4">
 
                 <img
-                    src="{{ url_for('images', filename='area2.jpg') }}"
+                    src="{{ url_for('static', filename='images/area2.jpg') }}"
                     class="img-fluid rounded"
-                    alt="環境">
+                    alt="診療區">
 
             </div>
 
@@ -817,9 +879,9 @@
             <div class="col-md-4">
 
                 <img
-                    src="{{ url_for('images', filename='area3.jpg') }}"
+                    src="{{ url_for('static', filename='images/area3.jpg') }}"
                     class="img-fluid rounded"
-                    alt="環境">
+                    alt="休息區">
 
             </div>
 
@@ -916,6 +978,37 @@
             </div>
 
 
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button
+                        class="accordion-button collapsed"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#q3">
+
+                        預約後多久會收到確認？
+
+                    </button>
+
+                </h2>
+
+
+                <div
+                    id="q3"
+                    class="accordion-collapse collapse">
+
+                    <div class="accordion-body">
+
+                        預約送出後，管理人員會確認您的預約資料。
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
         </div>
 
     </div>
@@ -951,11 +1044,12 @@
                     <div class="card-body">
 
                         <h5>
+                            <i class="fas fa-calendar-check me-2"></i>
                             健康講座
                         </h5>
 
                         <p>
-                            每月免費健康教育活動。
+                            每月提供健康教育活動，歡迎民眾踴躍參加。
                         </p>
 
                     </div>
@@ -972,11 +1066,12 @@
                     <div class="card-body">
 
                         <h5>
+                            <i class="fas fa-syringe me-2"></i>
                             流感疫苗
                         </h5>
 
                         <p>
-                            即日起開始施打。
+                            即日起提供流感疫苗相關服務。
                         </p>
 
                     </div>
@@ -993,11 +1088,12 @@
                     <div class="card-body">
 
                         <h5>
+                            <i class="fas fa-heartbeat me-2"></i>
                             健檢優惠
                         </h5>
 
                         <p>
-                            年度健康方案優惠中。
+                            年度健康檢查方案優惠中。
                         </p>
 
                     </div>
@@ -1032,7 +1128,7 @@
             </h2>
 
             <p>
-                請填寫以下資料
+                請填寫以下資料，我們將協助您安排預約
             </p>
 
         </div>
@@ -1040,14 +1136,14 @@
 
         <!-- Flask 訊息 -->
 
-        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
 
             {% if messages %}
 
-                {% for message in messages %}
+                {% for category, message in messages %}
 
                     <div
-                        class="alert alert-success text-center">
+                        class="alert alert-{{ category }} text-center">
 
                         {{ message }}
 
@@ -1060,87 +1156,257 @@
         {% endwith %}
 
 
-        <form
-            method="POST"
-            action="{{ url_for('booking') }}">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-9">
+
+                <div class="card shadow-sm border-0">
+
+                    <div class="card-body p-4 p-md-5">
 
 
-            <div class="row g-3">
+                        <form
+                            method="POST"
+                            action="{{ url_for('booking') }}">
 
 
-                <div class="col-md-6">
+                            <div class="row g-3">
 
-                    <input
-                        type="text"
-                        name="name"
-                        class="form-control"
-                        placeholder="姓名"
-                        required>
+
+                                <!-- 姓名 -->
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        class="form-label"
+                                        for="name">
+
+                                        姓名
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        class="form-control"
+                                        placeholder="請輸入姓名"
+                                        required>
+
+                                </div>
+
+
+                                <!-- 電話 -->
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        class="form-label"
+                                        for="phone">
+
+                                        電話
+
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        class="form-control"
+                                        placeholder="例如：0912345678"
+                                        required>
+
+                                </div>
+
+
+                                <!-- Email -->
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        class="form-label"
+                                        for="email">
+
+                                        Email
+
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        class="form-control"
+                                        placeholder="example@email.com">
+
+                                </div>
+
+
+                                <!-- 服務項目 -->
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        class="form-label"
+                                        for="service">
+
+                                        預約服務
+
+                                    </label>
+
+                                    <select
+                                        id="service"
+                                        name="service"
+                                        class="form-select"
+                                        required>
+
+                                        <option value="">
+                                            請選擇服務
+                                        </option>
+
+                                        <option value="健康檢查">
+                                            健康檢查
+                                        </option>
+
+                                        <option value="慢性病管理">
+                                            慢性病管理
+                                        </option>
+
+                                        <option value="心理諮詢">
+                                            心理諮詢
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- 日期 -->
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        class="form-label"
+                                        for="booking_date">
+
+                                        預約日期
+
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="booking_date"
+                                        name="booking_date"
+                                        class="form-control"
+                                        required>
+
+                                </div>
+
+
+                                <!-- 時間 -->
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        class="form-label"
+                                        for="booking_time">
+
+                                        預約時間
+
+                                    </label>
+
+                                    <select
+                                        id="booking_time"
+                                        name="booking_time"
+                                        class="form-select"
+                                        required>
+
+                                        <option value="">
+                                            請選擇時間
+                                        </option>
+
+                                        <option value="09:00">
+                                            09:00
+                                        </option>
+
+                                        <option value="10:00">
+                                            10:00
+                                        </option>
+
+                                        <option value="11:00">
+                                            11:00
+                                        </option>
+
+                                        <option value="13:00">
+                                            13:00
+                                        </option>
+
+                                        <option value="14:00">
+                                            14:00
+                                        </option>
+
+                                        <option value="15:00">
+                                            15:00
+                                        </option>
+
+                                        <option value="16:00">
+                                            16:00
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- 備註 -->
+
+                                <div class="col-12">
+
+                                    <label
+                                        class="form-label"
+                                        for="message">
+
+                                        需求說明
+
+                                    </label>
+
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        class="form-control"
+                                        rows="5"
+                                        placeholder="請輸入其他需求或備註"></textarea>
+
+                                </div>
+
+
+                                <!-- 按鈕 -->
+
+                                <div class="col-12 text-center mt-4">
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary btn-lg px-5">
+
+                                        <i class="fas fa-calendar-check me-2"></i>
+
+                                        送出預約
+
+                                    </button>
+
+                                </div>
+
+
+                            </div>
+
+                        </form>
+
+                    </div>
 
                 </div>
-
-
-                <div class="col-md-6">
-
-                    <input
-                        type="tel"
-                        name="phone"
-                        class="form-control"
-                        placeholder="電話"
-                        required>
-
-                </div>
-
-
-                <div class="col-md-6">
-
-                    <input
-                        type="email"
-                        name="email"
-                        class="form-control"
-                        placeholder="Email">
-
-                </div>
-
-
-                <div class="col-md-6">
-
-                    <input
-                        type="date"
-                        name="booking_date"
-                        class="form-control"
-                        required>
-
-                </div>
-
-
-                <div class="col-12">
-
-                    <textarea
-                        name="message"
-                        class="form-control"
-                        rows="5"
-                        placeholder="需求說明"></textarea>
-
-                </div>
-
-
-                <div class="col-12 text-center">
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary btn-lg">
-
-                        送出預約
-
-                    </button>
-
-                </div>
-
 
             </div>
 
-        </form>
+        </div>
 
     </div>
 
@@ -1173,6 +1439,7 @@
             <div class="col-md-6">
 
                 <h5>
+                    <i class="fas fa-location-dot me-2"></i>
                     地址
                 </h5>
 
@@ -1182,6 +1449,7 @@
 
 
                 <h5>
+                    <i class="fas fa-phone me-2"></i>
                     電話
                 </h5>
 
@@ -1191,11 +1459,22 @@
 
 
                 <h5>
+                    <i class="fas fa-envelope me-2"></i>
                     Email
                 </h5>
 
                 <p>
                     service@familyhealth.com
+                </p>
+
+
+                <h5>
+                    <i class="fas fa-clock me-2"></i>
+                    服務時間
+                </h5>
+
+                <p>
+                    星期一～星期五 09:00～17:00
                 </p>
 
             </div>
@@ -1206,7 +1485,8 @@
                 <iframe
                     class="w-100 rounded"
                     height="300"
-                    src="https://maps.google.com/maps?q=Taichung&t=&z=13&ie=UTF8&iwloc=&output=embed">
+                    src="https://maps.google.com/maps?q=Taichung&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    loading="lazy">
                 </iframe>
 
             </div>
@@ -1256,14 +1536,32 @@
 </script>
 
 
-<!-- 自己的 JS -->
+<!-- 自訂 JS -->
 
 <script
-    src="{{ url_for('js', filename='main.js') }}">
+    src="{{ url_for('static', filename='js/main.js') }}">
+</script>
+
+
+<!-- 日期限制 -->
+
+<script>
+
+    const bookingDate =
+        document.getElementById("booking_date");
+
+    if (bookingDate) {
+
+        const today =
+            new Date().toISOString().split("T")[0];
+
+        bookingDate.min = today;
+
+    }
+
 </script>
 
 
 </body>
 
 </html>
-```
