@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
 
 <head>
@@ -10,11 +9,15 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>預約管理</title>
+    <title>預約管理｜全家健康管理中心</title>
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
@@ -22,138 +25,389 @@
 <body class="bg-light">
 
 
-<div class="container py-5">
+<!-- =========================
+     Navbar
+========================= -->
 
-    <h1 class="mb-4">
-        全家健康管理中心－預約管理
-    </h1>
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
 
+    <div class="container">
 
-    {% if bookings %}
+        <span class="navbar-brand fw-bold">
 
-    <div class="table-responsive">
+            <i class="fas fa-heart-pulse text-primary me-2"></i>
 
-        <table class="table table-bordered table-striped bg-white">
+            全家健康管理中心
 
-            <thead class="table-primary">
-
-                <tr>
-
-                    <th>
-                        編號
-                    </th>
-
-                    <th>
-                        姓名
-                    </th>
-
-                    <th>
-                        電話
-                    </th>
-
-                    <th>
-                        Email
-                    </th>
-
-                    <th>
-                        預約日期
-                    </th>
-
-                    <th>
-                        需求
-                    </th>
-
-                    <th>
-                        操作
-                    </th>
-
-                </tr>
-
-            </thead>
+        </span>
 
 
-            <tbody>
+        <a
+            href="{{ url_for('home') }}"
+            class="btn btn-outline-primary">
 
-                {% for booking in bookings %}
+            <i class="fas fa-house me-1"></i>
 
-                <tr>
+            返回首頁
 
-                    <td>
-                        {{ booking["id"] }}
-                    </td>
-
-                    <td>
-                        {{ booking["name"] }}
-                    </td>
-
-                    <td>
-                        {{ booking["phone"] }}
-                    </td>
-
-                    <td>
-                        {{ booking["email"] }}
-                    </td>
-
-                    <td>
-                        {{ booking["booking_date"] }}
-                    </td>
-
-                    <td>
-                        {{ booking["message"] }}
-                    </td>
-
-                    <td>
-
-                        <form
-                            method="POST"
-                            action="{{ url_for(
-                                'delete_booking',
-                                booking_id=booking['id']
-                            ) }}">
-
-                            <button
-                                type="submit"
-                                class="btn btn-danger btn-sm"
-                                onclick="return confirm('確定要刪除嗎？');">
-
-                                刪除
-
-                            </button>
-
-                        </form>
-
-                    </td>
-
-                </tr>
-
-                {% endfor %}
-
-            </tbody>
-
-        </table>
+        </a>
 
     </div>
 
-    {% else %}
+</nav>
 
-        <div class="alert alert-info">
 
-            目前沒有預約資料。
+
+<!-- =========================
+     Main
+========================= -->
+
+<div class="container py-5">
+
+
+    <!-- 標題 -->
+
+    <div class="mb-4">
+
+        <h1 class="fw-bold">
+
+            預約管理
+
+        </h1>
+
+        <p class="text-muted">
+
+            管理使用者的線上預約資料
+
+        </p>
+
+    </div>
+
+
+
+    <!-- Flash -->
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            {% for category, message in messages %}
+
+                <div class="alert alert-{{ category }}">
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+
+
+    <!-- =========================
+         統計
+    ========================= -->
+
+    <div class="row g-4 mb-4">
+
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <p class="text-muted mb-1">
+
+                                預約總數
+
+                            </p>
+
+                            <h2 class="fw-bold">
+
+                                {{ bookings|length }}
+
+                            </h2>
+
+                        </div>
+
+
+                        <div class="text-primary fs-1">
+
+                            <i class="fas fa-calendar-check"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
-    {% endif %}
+
+    </div>
 
 
-    <a
-        href="{{ url_for('home') }}"
-        class="btn btn-primary">
 
-        返回網站
+    <!-- =========================
+         預約列表
+    ========================= -->
 
-    </a>
+    <div class="card border-0 shadow-sm">
+
+
+        <div class="card-header bg-white py-3">
+
+            <h5 class="mb-0">
+
+                <i class="fas fa-list text-primary me-2"></i>
+
+                預約資料
+
+            </h5>
+
+        </div>
+
+
+
+        {% if bookings %}
+
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead class="table-primary">
+
+                    <tr>
+
+                        <th>編號</th>
+
+                        <th>姓名</th>
+
+                        <th>電話</th>
+
+                        <th>Email</th>
+
+                        <th>預約日期</th>
+
+                        <th>需求</th>
+
+                        <th>建立時間</th>
+
+                        <th>操作</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for booking in bookings %}
+
+                    <tr>
+
+
+                        <!-- 編號 -->
+
+                        <td>
+
+                            #{{ booking["id"] }}
+
+                        </td>
+
+
+                        <!-- 姓名 -->
+
+                        <td>
+
+                            <strong>
+
+                                {{ booking["name"] }}
+
+                            </strong>
+
+                        </td>
+
+
+                        <!-- 電話 -->
+
+                        <td>
+
+                            {{ booking["phone"] }}
+
+                        </td>
+
+
+                        <!-- Email -->
+
+                        <td>
+
+                            {% if booking["email"] %}
+
+                                {{ booking["email"] }}
+
+                            {% else %}
+
+                                <span class="text-muted">
+
+                                    未提供
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- 日期 -->
+
+                        <td>
+
+                            <i class="fas fa-calendar text-primary me-1"></i>
+
+                            {{ booking["booking_date"] }}
+
+                        </td>
+
+
+                        <!-- 需求 -->
+
+                        <td>
+
+                            {% if booking["message"] %}
+
+                                <span
+                                    class="d-inline-block text-truncate"
+                                    style="max-width: 200px;">
+
+                                    {{ booking["message"] }}
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="text-muted">
+
+                                    無
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- 建立時間 -->
+
+                        <td>
+
+                            <small class="text-muted">
+
+                                {{ booking["created_at"] }}
+
+                            </small>
+
+                        </td>
+
+
+                        <!-- 操作 -->
+
+                        <td>
+
+
+                            <form
+                                method="POST"
+                                action="{{ url_for(
+                                    'delete_booking',
+                                    booking_id=booking['id']
+                                ) }}"
+                                onsubmit="return confirm('確定要刪除這筆預約嗎？');">
+
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-danger btn-sm">
+
+                                    <i class="fas fa-trash me-1"></i>
+
+                                    刪除
+
+                                </button>
+
+
+                            </form>
+
+
+                        </td>
+
+
+                    </tr>
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        {% else %}
+
+
+        <!-- 沒有資料 -->
+
+        <div class="card-body text-center py-5">
+
+            <i
+                class="fas fa-calendar-xmark
+                       fa-3x
+                       text-muted
+                       mb-3">
+            </i>
+
+            <h4>
+
+                目前沒有預約資料
+
+            </h4>
+
+            <p class="text-muted mb-0">
+
+                使用者完成預約後，資料會顯示在這裡。
+
+            </p>
+
+        </div>
+
+
+        {% endif %}
+
+
+    </div>
+
+
 
 </div>
+
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+</script>
 
 
 </body>
