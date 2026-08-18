@@ -3,18 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 import os
 
-from dotenv import load_dotenv
-from openai import OpenAI
 
-# =========================================================
-# OpenAI API 設定
-# =========================================================
 
-load_dotenv()
-
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
-)
 
 
 # =========================================================
@@ -342,34 +332,9 @@ def booking():
 
 
 # =========================================================
-# AI 測試
-# =========================================================
 
-@app.route("/ai-test")
-def ai_test():
 
-    try:
 
-        response = client.responses.create(
-            model="gpt-5-mini",
-            input="請用一句繁體中文告訴我，你現在可以正常工作。"
-        )
-
-        ai_reply = response.output_text
-
-        return f"""
-        <h1>AI 測試成功</h1>
-        <p>{ai_reply}</p>
-        """
-
-    except Exception as e:
-
-        return f"""
-        <h1>AI 測試失敗</h1>
-        <p>{str(e)}</p>
-        """
-
-    # =========================================================
 # AI 查詢預約資料
 # =========================================================
 
