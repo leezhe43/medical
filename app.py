@@ -3,6 +3,19 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 import os
 
+from dotenv import load_dotenv
+from openai import OpenAI
+
+# =========================================================
+# OpenAI API 設定
+# =========================================================
+
+load_dotenv()
+
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY")
+)
+
 
 # =========================================================
 # Flask 設定
@@ -328,6 +341,87 @@ def booking():
     )
 
 
+# =========================================================
+# AI 測試
+# =========================================================
+
+@app.route("/ai-test")
+def ai_test():
+
+    try:
+
+        response = client.responses.create(
+            model="gpt-5-mini",
+            input="請用一句繁體中文告訴我，你現在可以正常工作。"
+        )
+
+        ai_reply = response.output_text
+
+        return f"""
+        <h1>AI 測試成功</h1>
+        <p>{ai_reply}</p>
+        """
+
+    except Exception as e:
+
+        return f"""
+        <h1>AI 測試失敗</h1>
+        <p>{str(e)}</p>
+        """
+
+    # =========================================================
+# AI 查詢預約資料
+# =========================================================
+
+@app.route("/ai-query", methods=["GET", "POST"])
+def ai_query():
+
+    result = None
+    question = ""
+
+    if request.method == "POST":
+
+        question = request.form.get(
+            "question",
+            ""
+        ).strip()
+
+        if not question:
+
+            result = "請輸入問題。"
+
+        else:
+
+            # -------------------------------------------------
+            # 查詢預約總數
+            # -------------------------------------------------
+
+            if "幾筆" in question or "多少筆" in question:
+
+                conn = get_db_connection()
+
+                count = conn.execute("""
+                    SELECT COUNT(*)
+                    FROM bookings
+                """).fetchone()[0]
+
+                conn.close()
+
+                result = f"目前共有 {count} 筆預約。"
+
+            else:
+
+                result = (
+                    "目前可以查詢預約總數，"
+                    "例如：「目前有幾筆預約？」"
+                )
+
+    return render_template(
+        "ai_query.html",
+        question=question,
+        result=result
+    )
+    
 # =========================================================
 # 管理後台
 # =========================================================

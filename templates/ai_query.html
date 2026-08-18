@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>AI 預約查詢</title>
+
+</head>
+
+
+<body>
+
+    <h1>AI 預約查詢</h1>
+
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="question"
+            placeholder="例如：目前有幾筆預約？"
+            value="{{ question }}"
+        >
+
+        <button type="submit">
+            查詢
+        </button>
+
+    </form>
+
+
+    {% if result %}
+
+        <hr>
+
+        <h2>查詢結果</h2>
+
+        <p>
+            {{ result }}
+        </p>
+
+    {% endif %}
+
+
+</body>
+
+</html>
